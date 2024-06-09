@@ -1,0 +1,30 @@
+type User {
+  # Example field (placeholder)
+  id: number | string;
+  email: string;
+  password: string;
+  createdAt: Date;
+}
+
+input CreateUserInput {
+  email: string;
+  password: string;
+
+}
+
+input UpdateUserInput {
+  email: string;
+  password: string;
+
+}
+
+type Query {
+  user: [User]!
+  user(id: Int!): User
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Int!): User
+}
