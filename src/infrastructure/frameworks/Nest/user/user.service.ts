@@ -7,10 +7,20 @@ import {
   UserRepositoryInterface,
 } from 'src/domain/interfaces/entity/user.interfaces';
 import { UserId } from 'src/domain/provider/identifier/userIdentifier.provider';
+import { container } from 'tsyringe';
+import Logger from 'src/domain/port/logger/logger.port';
 
 @Injectable()
 export class UserService implements UserRepositoryInterface {
+  private logger: Logger;
+  constructor() {
+    this.logger = container.resolve<Logger>('Logger');
+  }
+
   async create(createUserInput: CreateUserInput): Promise<UserInterface> {
+    this.logger.info('[Pulse] create user start');
+    console.log('create');
+
     return {
       id: 123,
       email: createUserInput.email,
