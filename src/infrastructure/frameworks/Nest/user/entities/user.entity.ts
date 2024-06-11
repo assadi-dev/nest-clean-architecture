@@ -5,12 +5,13 @@ import {
   CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity()
 @ObjectType()
 export class User implements UserInterface {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('increment')
   @Field(() => Int)
   id: number;
   @Column()
@@ -25,4 +26,10 @@ export class User implements UserInterface {
   })
   @Field({ nullable: true })
   createdAt: Date;
+  @UpdateDateColumn({
+    type: 'datetime',
+    nullable: true,
+  })
+  @Field({ nullable: true })
+  updatedAt: Date;
 }

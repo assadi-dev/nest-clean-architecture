@@ -1,17 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
-import {
-  CreateUserInputInterface,
-  UserInterface,
-  UserRepositoryInterface,
-} from 'src/domain/interfaces/entity/user.interfaces';
+import { UserInterface } from 'src/domain/interfaces/entity/user.interfaces';
 import { UserId } from 'src/domain/provider/identifier/userIdentifier.provider';
 import { container } from 'tsyringe';
 import Logger from 'src/domain/port/logger/logger.port';
+import CreateUserUseCase from 'src/domain/usecases/user/create-user.usecase';
+import ListUserUseCase from 'src/domain/usecases/user/list-user.usecase';
 
 @Injectable()
-export class UserService implements UserRepositoryInterface {
+export class UserService {
   private logger: Logger;
   constructor() {
     this.logger = container.resolve<Logger>('Logger');
@@ -19,17 +17,16 @@ export class UserService implements UserRepositoryInterface {
 
   async create(createUserInput: CreateUserInput): Promise<UserInterface> {
     this.logger.info('[Pulse] create user start');
-    console.log('create');
-
-    return {
-      id: 123,
-      email: createUserInput.email,
-      password: createUserInput.password,
-    };
+    const createUser = new CreateUserUseCase();
+    const user = await createUser.execute(createUserInput);
+    return user;
   }
 
   async findAll() {
-    return [];
+    this.logger.info('[Pulse] get All user start');
+    const listUser = new ListUserUseCase();
+    const user = await listUser.execute();
+    return user;
   }
 
   async findOne(id: UserId): Promise<UserInterface> {
@@ -37,6 +34,8 @@ export class UserService implements UserRepositoryInterface {
       id: 123,
       email: 'test@12.com',
       password: '123456',
+      createdAt: new Date(),
+      updatedAt: new Date(),
     };
   }
 
@@ -45,6 +44,8 @@ export class UserService implements UserRepositoryInterface {
       id: 123,
       email: 'test@12.com',
       password: '123456',
+      createdAt: new Date(),
+      updatedAt: new Date(),
     };
   }
 
