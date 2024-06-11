@@ -1,4 +1,4 @@
-import { mysqlConfig } from 'config/database.config';
+import { mysqlConfig } from '../../../../config/database.config';
 import { DataSourceOptions } from 'typeorm';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 

@@ -15,8 +15,6 @@ export default class TypeOrmUserRepository implements UserRepositoryInterface {
     const user = await userRepository.save({
       email: inputs.email,
       password: inputs.password,
-      createdAt: new Date(),
-      updatedAt: new Date(),
     });
     // const user = await userRepository.save(result);
 
