@@ -10,7 +10,7 @@ import { join } from 'path';
       driver: ApolloDriver,
       autoSchemaFile: join(
         process.cwd(),
-        'src/infrastructure/adapter/graphQL/schema.gql',
+        'src/infrastructure/frameworks/Nest/schema.gql',
       ),
       playground: false,
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
