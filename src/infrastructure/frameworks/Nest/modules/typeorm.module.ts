@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { mysqlOption } from 'src/infrastructure/adapter/type-orm/type-orm.config';
+import { mysqlOption } from '../../../../infrastructure/adapter/orm/type-orm/type-orm.config';
 import { join } from 'path';
 
 @Module({

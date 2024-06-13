@@ -1,5 +1,5 @@
 import { container } from 'tsyringe';
-import './type-orm/type-orm-injectior';
+import './orm/type-orm/type-orm-injectior';
 import Logger from 'src/domain/port/logger/logger.port';
 import WinstonLogger from './winston-logger/winston-logger.adapter';
 
