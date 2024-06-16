@@ -32,7 +32,4 @@ export class User implements UserInterface {
   })
   @Field({ nullable: true })
   updatedAt: Date;
-
-  @Column({ type: 'json', nullable: true })
-  role: JSON;
 }

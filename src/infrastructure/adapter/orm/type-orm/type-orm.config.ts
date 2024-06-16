@@ -9,9 +9,7 @@ export const mysqlOption: DataSourceOptions = {
   username: mysqlConfig.username,
   password: mysqlConfig.password,
   database: mysqlConfig.database,
-  synchronize: false,
   namingStrategy: new SnakeNamingStrategy(),
-  migrationsRun: false,
   extra: {
     charset: 'utf8mb4_unicode_ci',
   },
