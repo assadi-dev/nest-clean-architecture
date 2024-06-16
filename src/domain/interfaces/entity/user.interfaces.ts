@@ -1,5 +1,5 @@
 import { UserId } from 'src/domain/provider/identifier/userIdentifier.provider';
-import Timestampable from './timstampable.interface';
+import Timestampable from '../domainServices/timstampable.interface';
 
 export interface UserInterface extends Timestampable {
   id: UserId;
