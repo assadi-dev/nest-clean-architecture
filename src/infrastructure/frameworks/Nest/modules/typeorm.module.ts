@@ -10,7 +10,7 @@ import { User } from '../user/entities/user.entity';
     TypeOrmModule.forRoot({
       ...mysqlOption,
       entities: [User],
-      synchronize: true,
+      synchronize: false,
       autoLoadEntities: true,
     }),
   ],
