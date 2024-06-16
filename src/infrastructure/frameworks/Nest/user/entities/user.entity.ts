@@ -34,5 +34,5 @@ export class User implements UserInterface {
   updatedAt: Date;
 
   @Column({ type: 'json', nullable: true })
-  role: JSON;
+  roleR: JSON;
 }

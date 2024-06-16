@@ -20,8 +20,8 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "typeorm": "typeorm-ts-node-esm",
     "typeorm:migration:create": "npm run typeorm  migration:create src\\infrastructure\\adapter\\type-orm\\migrations\\create_migration",
-    "typeorm:migration:generate": "npm run typeorm  migration:generate -- -d src\\infrastructure\\adapter\\type-orm\\data-source.adapter.ts src\\infrastructure\\adapter\\type-orm\\migrations\\migration",
-    "typeorm:migration:migrate": "npm run typeorm migration:run -- -d src\\infrastructure\\adapter\\type-orm\\data-source.adapter.ts"
+    "typeorm:migration:generate": "npm run typeorm  migration:generate -- -d src\\infrastructure\\adapter\\orm\\type-orm\\data-source.adapter.ts src\\infrastructure\\adapter\\orm\\type-orm\\migrations\\migration",
+    "typeorm:migration:migrate": "npm run typeorm migration:run -- -d src\\infrastructure\\adapter\\orm\\type-orm\\data-source.adapter.ts"
   },
   "dependencies": {
     "@apollo/server": "^4.10.4",

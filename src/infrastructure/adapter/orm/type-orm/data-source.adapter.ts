@@ -6,6 +6,7 @@ import { join } from 'path';
 export const dataSource = new DataSource({
   ...mysqlOption,
   entities: [User],
+  migrations: [join(__dirname, './migrations/*{.ts,.js}')],
 });
 
 /**
