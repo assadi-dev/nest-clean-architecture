@@ -2,10 +2,11 @@ import { DataSource } from 'typeorm';
 import { mysqlOption } from './type-orm.config';
 import { User } from '../../../frameworks/Nest/user/entities/user.entity';
 import { join } from 'path';
+import { Post } from '../../../frameworks/Nest/post/entities/post.entity';
 
 export const dataSource = new DataSource({
   ...mysqlOption,
-  entities: [User],
+  entities: [User, Post],
   migrations: [join(__dirname, './migrations/*{.ts,.js}')],
 });
 
