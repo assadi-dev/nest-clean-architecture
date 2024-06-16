@@ -22,7 +22,9 @@
     "typeorm:migration:create": "npm run typeorm  migration:create src\\infrastructure\\adapter\\type-orm\\migrations\\create_migration",
     "typeorm:migration:generate": "npm run typeorm  migration:generate -- -d src\\infrastructure\\adapter\\orm\\type-orm\\data-source.adapter.ts src\\infrastructure\\adapter\\orm\\type-orm\\migrations\\migration",
     "typeorm:migration:migrate": "npm run typeorm migration:run -- -d src\\infrastructure\\adapter\\orm\\type-orm\\data-source.adapter.ts",
-    "prisma:migration": "npx prisma migrate dev --name migration"
+    "prisma:migration": "npx prisma migrate dev --name migration",
+    "prisma:introspect": "dotenv -- prisma introspect",
+    "prisma:generate": "dotenv -- prisma generate"
   },
   "dependencies": {
     "@apollo/server": "^4.10.4",

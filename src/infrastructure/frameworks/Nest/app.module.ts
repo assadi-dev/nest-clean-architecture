@@ -15,7 +15,7 @@ import { PrismaModule } from './database/prisma/prisma.module';
     // TypOrmRoot,
     GraphQLRoot,
     UserModule,
-    PrismaModule,
+    // PrismaModule,
   ],
   controllers: [AppController],
   providers: [AppService],
