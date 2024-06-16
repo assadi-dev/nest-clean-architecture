@@ -22,6 +22,9 @@ export default class CreatePostUseCase {
       content: z.string().min(1),
       authorId: z.number().min(1),
     });
+
+    //type ObtenirType =  ReturnType<typeof postInput.parse>
+
     const postInputValidate = postInput.safeParse(input);
     if (postInputValidate.error) throw postInputValidate.error;
     return postInputValidate.data;
