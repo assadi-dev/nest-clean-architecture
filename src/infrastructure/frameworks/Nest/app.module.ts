@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import GraphQLRoot from './modules/graphql.module';
 import { UserModule } from './user/user.module';
 import { CoreDependencies } from './modules/core.module';
+import { PostModule } from './post/post.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { CoreDependencies } from './modules/core.module';
     TypOrmRoot,
     GraphQLRoot,
     UserModule,
+    PostModule,
   ],
   controllers: [AppController],
   providers: [AppService],
