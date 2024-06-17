@@ -20,7 +20,7 @@ export default class CreatePostUseCase {
     const postInput = z.object({
       title: z.string().min(1),
       content: z.string().min(1),
-      authorId: z.number().min(1),
+      authorId: z.coerce.number().min(1),
     });
 
     //type ObtenirType =  ReturnType<typeof postInput.parse>
