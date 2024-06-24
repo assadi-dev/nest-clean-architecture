@@ -1,27 +1,27 @@
 import Timestampable from '../domainServices/timstampable.interface';
-import { UserInterface } from './user.interfaces';
+import { AuthorInterface } from './author.interface';
 
 export interface PostInterface extends Timestampable {
   id: number;
   title: string;
   content: string;
-  author: UserInterface;
+  author: AuthorInterface;
 }
 
 export type PostInputInterface = Omit<
   PostInterface,
-  'id' | 'createdAt' | 'updatedAt' | 'author'
+  'id' | 'createdAt' | 'updatedAt' | 'author' | 'deletedAt'
 >;
 
 export interface CreatePostInputInterface extends PostInputInterface {
   authorId?: number;
-  author?: UserInterface;
+  author?: AuthorInterface;
 }
 
 export interface updatePostInputInterface extends CreatePostInputInterface {
   id?: number;
   authorId?: number;
-  author?: UserInterface;
+  author?: AuthorInterface;
 }
 
 export interface PostRepositoryInterface {
@@ -32,5 +32,5 @@ export interface PostRepositoryInterface {
     id: number,
     input: updatePostInputInterface,
   ): Promise<PostInterface | null>;
-  delete(id: number): Promise<boolean>;
+  delete(id: number): Promise<void>;
 }

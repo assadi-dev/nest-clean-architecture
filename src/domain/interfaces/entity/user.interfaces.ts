@@ -1,8 +1,7 @@
-import { UserId } from 'src/domain/provider/identifier/userIdentifier.provider';
 import Timestampable from '../domainServices/timstampable.interface';
 
 export interface UserInterface extends Timestampable {
-  id: UserId;
+  id: number;
   email: string;
   password: string;
 }
@@ -14,6 +13,6 @@ export type CreateUserInputInterface = Omit<
 
 export interface UserRepositoryInterface {
   create(inputs: CreateUserInputInterface): Promise<UserInterface>;
-  findOne(userId: UserId): Promise<UserInterface | null>;
+  findOne(userId: number): Promise<UserInterface | null>;
   findAll(): Promise<UserInterface[]>;
 }

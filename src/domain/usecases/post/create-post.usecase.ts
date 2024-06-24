@@ -3,35 +3,36 @@ import {
   PostInterface,
   PostRepositoryInterface,
 } from 'src/domain/interfaces/entity/post.interface';
-import { UserRepositoryInterface } from 'src/domain/interfaces/entity/user.interfaces';
-import { User } from 'src/infrastructure/frameworks/Nest/user/entities/user.entity';
 import { container } from 'tsyringe';
-import { z } from 'zod';
+import { PostCreateInputDto, postDecode } from './dto/post.dto';
+import {
+  AuthorInterface,
+  AuthorRepositoryInterface,
+} from 'src/domain/interfaces/entity/author.interface';
 
 export default class CreatePostUseCase {
   private postRepository: PostRepositoryInterface;
-  private userRepository: UserRepositoryInterface;
+  private authorRepository: AuthorRepositoryInterface;
   constructor() {
     this.postRepository = container.resolve('PostRepository');
-    this.userRepository = container.resolve('UserRepository');
+    this.authorRepository = container.resolve('authorRepository');
   }
 
-  public validateCreateInput(input: CreatePostInputInterface) {
-    const postInput = z.object({
-      title: z.string().min(1),
-      content: z.string().min(1),
-      authorId: z.coerce.number().min(1),
-    });
-
-    //type ObtenirType =  ReturnType<typeof postInput.parse>
-
-    const postInputValidate = postInput.safeParse(input);
+  public validateCreateInput(input: PostCreateInputDto) {
+    const postInputValidate = postDecode.decodeInput(input);
     if (postInputValidate.error) throw postInputValidate.error;
     return postInputValidate.data;
   }
 
-  public async findAuthor(id: number): Promise<User | null> {
-    const author = await this.userRepository.findOne(id);
+  public validateUserId(arg: number) {
+    const userIdValidate = postDecode.decodeId(arg);
+    if (userIdValidate.error) throw userIdValidate.error;
+    return userIdValidate.data;
+  }
+
+  public async findAuthor(id: number): Promise<AuthorInterface | null> {
+    const userId = this.validateUserId(id);
+    const author = await this.authorRepository.findOne(userId);
     if (!author) return null;
     return author;
   }

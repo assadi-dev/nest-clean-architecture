@@ -7,6 +7,7 @@ import GraphQLRoot from './modules/graphql.module';
 import { UserModule } from './user/user.module';
 import { CoreDependencies } from './modules/core.module';
 import { PostModule } from './post/post.module';
+import { AuthorModule } from './author/author.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { PostModule } from './post/post.module';
     GraphQLRoot,
     UserModule,
     PostModule,
+    AuthorModule,
   ],
   controllers: [AppController],
   providers: [AppService],

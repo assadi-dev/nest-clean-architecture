@@ -2,7 +2,7 @@ import { UserRepositoryInterface } from 'src/domain/interfaces/entity/user.inter
 import { container } from 'tsyringe';
 
 import TypeOrmUserRepository from './repositories/user.repository';
-import TypeOrmPostRepository from './repositories/post.repositories';
+import TypeOrmPostRepository from './repositories/post.repository';
 
 container
   .register<UserRepositoryInterface>('UserRepository', {

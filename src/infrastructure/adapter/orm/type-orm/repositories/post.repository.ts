@@ -4,7 +4,6 @@ import {
   PostRepositoryInterface,
   updatePostInputInterface,
 } from 'src/domain/interfaces/entity/post.interface';
-import { UserInterface } from 'src/domain/interfaces/entity/user.interfaces';
 import { Post } from 'src/infrastructure/frameworks/Nest/post/entities/post.entity';
 import { Repository } from 'typeorm';
 import { dataSource, isInitialized } from '../data-source.adapter';
@@ -28,7 +27,7 @@ export default class TypeOrmPostRepository implements PostRepositoryInterface {
   }
   async findAll(): Promise<PostInterface[]> {
     const postRepository = await this.getPostRepository();
-    return postRepository.find({ relations: { author: true } });
+    return await postRepository.find({ relations: { author: true } });
   }
   async update(
     id: number,
@@ -38,10 +37,8 @@ export default class TypeOrmPostRepository implements PostRepositoryInterface {
     await postRepository.update({ id }, input);
     return await this.findOne(id);
   }
-  async delete(id: number): Promise<boolean> {
+  async delete(id: number): Promise<void> {
     const postRepository = await this.getPostRepository();
-    const result = await postRepository.softDelete({ id });
-    if (result.affected) return true;
-    return false;
+    await postRepository.softDelete({ id });
   }
 }

@@ -1,5 +1,4 @@
 import { PostInterface } from 'src/domain/interfaces/entity/post.interface';
-import { UserInterface } from 'src/domain/interfaces/entity/user.interfaces';
 import {
   Column,
   CreateDateColumn,
@@ -13,6 +12,7 @@ import {
 } from 'typeorm';
 import { User } from '../../user/entities/user.entity';
 import { Field, Int, ObjectType } from '@nestjs/graphql';
+import { Author } from '../../author/entities/author.entity';
 
 @Entity()
 @ObjectType()
@@ -26,10 +26,10 @@ export class Post implements PostInterface {
   @Column()
   @Field()
   content: string;
-  @OneToOne(() => User, { nullable: true })
+  @OneToOne(() => Author, { nullable: true })
   @JoinColumn()
-  @Field(() => User, { nullable: true })
-  author: User;
+  @Field(() => Author, { nullable: true })
+  author: Author;
   @CreateDateColumn({ nullable: true })
   @Field({ nullable: true })
   createdAt: Date;
