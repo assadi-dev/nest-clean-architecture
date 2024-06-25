@@ -4,30 +4,30 @@ import { UserInterface } from './user.interfaces';
 
 export interface AuthorInterface extends Timestampable {
   id: number;
-  email: string;
+  email?: string;
   lastName: string;
   firstName: string;
   pseudo: string | null;
-  bio: string;
-  avatar: string | null;
+  bio: string | null;
+  avatar?: string | null;
   dateOfBirth: Date;
-  author: UserInterface;
-  posts: PostInterface[];
+  user: UserInterface;
+  posts?: PostInterface[];
 }
 
 export type AuthorInputInterface = Omit<
   AuthorInterface,
-  'id' | 'createdAt' | 'updatedAt' | 'deletedAt' | 'author' | 'posts'
+  'id' | 'createdAt' | 'updatedAt' | 'deletedAt' | 'user' | 'posts'
 >;
 
-export interface CreateAuthorInputInterface extends AuthorInputInterface {
+export interface CreateAuthorInputInterface {
   userId?: number;
+  user?: UserInterface;
 }
 
 export interface updateAuthorInputInterface extends CreateAuthorInputInterface {
   id?: number;
   userId?: number;
-  user?: UserInterface;
 }
 
 export interface AuthorRepositoryInterface {

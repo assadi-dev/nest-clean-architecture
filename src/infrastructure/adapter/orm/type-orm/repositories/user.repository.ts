@@ -3,10 +3,10 @@ import {
   UserInterface,
   UserRepositoryInterface,
 } from 'src/domain/interfaces/entity/user.interfaces';
-import { UserId } from 'src/domain/provider/identifier/userIdentifier.provider';
-import { User } from 'src/infrastructure/frameworks/Nest/user/entities/user.entity';
+
 import { dataSource, isInitialized } from '../data-source.adapter';
 import 'reflect-metadata';
+import { User } from 'src/infrastructure/frameworks/Nest/user/entities/user.entity';
 
 export default class TypeOrmUserRepository implements UserRepositoryInterface {
   async create(inputs: CreateUserInputInterface): Promise<UserInterface> {
@@ -24,7 +24,7 @@ export default class TypeOrmUserRepository implements UserRepositoryInterface {
 
     return user;
   }
-  async findOne(userId: UserId): Promise<UserInterface> {
+  async findOne(userId: number): Promise<UserInterface> {
     await isInitialized();
     const userRepository = dataSource.getRepository(User);
     const result = await userRepository.findOne({

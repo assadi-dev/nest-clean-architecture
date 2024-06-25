@@ -36,15 +36,16 @@ export class Author implements AuthorInterface {
   @Field()
   bio: string;
   @Column()
-  @Field()
-  avatar: string;
+  @Field({ nullable: true })
+  avatar?: string;
   @Column()
   @Field()
   dateOfBirth: Date;
-  @OneToOne(() => Author, { nullable: true })
+  @Field(() => User)
+  @OneToOne(() => User, { nullable: true })
   @JoinColumn()
-  author: User;
-  @OneToMany(() => Post, (post) => post.author)
+  user: User;
+  @OneToMany(() => Post, (post) => post)
   @Field(() => [Post], { nullable: true })
   posts: Post[];
   @CreateDateColumn()

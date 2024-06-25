@@ -3,12 +3,12 @@ import Timestampable from '../domainServices/timstampable.interface';
 export interface UserInterface extends Timestampable {
   id: number;
   email: string;
-  password: string;
+  password: string | null;
 }
 
 export type CreateUserInputInterface = Omit<
   UserInterface,
-  'id' | 'createdAt' | 'updatedAt'
+  'id' | 'createdAt' | 'updatedAt' | 'deletedAt'
 >;
 
 export interface UserRepositoryInterface {

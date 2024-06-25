@@ -13,7 +13,7 @@ export class PostResolver {
     return this.postService.create(createPostInput);
   }
 
-  @Query(() => [Post], { name: 'FindAllPost' })
+  @Query(() => [Post], { name: 'findAllPost' })
   findAll() {
     return this.postService.findAll();
   }

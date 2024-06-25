@@ -26,7 +26,7 @@ export default class TypeOrmAuthorRepository
     const author = await authorRepository.findOne({
       where: { id },
       relations: {
-        author: true,
+        user: true,
         posts: true,
       },
     });
@@ -37,7 +37,7 @@ export default class TypeOrmAuthorRepository
     const authorRepository = await this.getAuthorRepository();
     return await authorRepository.find({
       relations: {
-        author: true,
+        user: true,
         posts: true,
       },
     });

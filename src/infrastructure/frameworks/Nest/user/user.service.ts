@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
 import { UserInterface } from 'src/domain/interfaces/entity/user.interfaces';
-import { UserId } from 'src/domain/provider/identifier/userIdentifier.provider';
 import { container } from 'tsyringe';
 import Logger from 'src/domain/port/logger/logger.port';
 import CreateUserUseCase from 'src/domain/usecases/user/create-user.usecase';
@@ -29,7 +28,7 @@ export class UserService {
     return user;
   }
 
-  async findOne(id: UserId): Promise<UserInterface> {
+  async findOne(id: number): Promise<UserInterface> {
     return {
       id: 123,
       email: 'test@12.com',
@@ -39,7 +38,7 @@ export class UserService {
     };
   }
 
-  async update(id: UserId, updateUserInput: UpdateUserInput) {
+  async update(id: number, updateUserInput: UpdateUserInput) {
     return {
       id: 123,
       email: 'test@12.com',
@@ -49,7 +48,7 @@ export class UserService {
     };
   }
 
-  async remove(id: UserId) {
+  async remove(id: number) {
     return `This action removes a #${id} user`;
   }
 }

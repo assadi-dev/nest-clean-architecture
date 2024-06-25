@@ -5,12 +5,11 @@ import {
   DeleteDateColumn,
   Entity,
   JoinColumn,
+  ManyToOne,
   OneToOne,
-  PrimaryColumn,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { User } from '../../user/entities/user.entity';
 import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { Author } from '../../author/entities/author.entity';
 
@@ -26,8 +25,7 @@ export class Post implements PostInterface {
   @Column()
   @Field()
   content: string;
-  @OneToOne(() => Author, { nullable: true })
-  @JoinColumn()
+  @ManyToOne(() => Author, { nullable: true })
   @Field(() => Author, { nullable: true })
   author: Author;
   @CreateDateColumn({ nullable: true })

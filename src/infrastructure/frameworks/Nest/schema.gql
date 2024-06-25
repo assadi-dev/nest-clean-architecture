@@ -4,7 +4,7 @@
 
 type User {
   id: Int!
-  email: String
+  email: String!
   password: String
   createdAt: DateTime
   updatedAt: DateTime
@@ -19,23 +19,44 @@ type Post {
   id: Int!
   title: String!
   content: String!
-  author: User
+  author: Author
   createdAt: DateTime
   updatedAt: DateTime
   deletedAt: DateTime
 }
 
+type Author {
+  id: Int!
+  email: String!
+  lastName: String!
+  firstName: String!
+  pseudo: String!
+  bio: String!
+  avatar: String
+  dateOfBirth: DateTime!
+  user: User!
+  posts: [Post!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime!
+}
+
 type Query {
-  findAll: [User!]!
-  findOne(id: Float!): User!
-  FindAllPost: [Post!]!
+  findAllUser: [User!]!
+  findUser(id: Float!): User!
+  findAllPost: [Post!]!
+  findAllAuthor: [Author!]!
+  findAuthor(id: Float!): Author!
 }
 
 type Mutation {
-  create(createUserInput: CreateUserInput!): User!
-  update(updateUserInput: UpdateUserInput!): User!
-  remove(id: Float!): String!
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Float!): String!
   createPost(createPostInput: CreatePostInput!): Post!
+  createAuthor(createAuthorInput: CreateAuthorInput!): Author!
+  updateAuthor(updateAuthorInput: UpdateAuthorInput!): Author!
+  removeAuthor(id: Float!): Author!
 }
 
 input CreateUserInput {
@@ -51,4 +72,19 @@ input CreatePostInput {
   authorId: Int!
   title: String!
   content: String!
+}
+
+input CreateAuthorInput {
+  email: String!
+  lastName: String!
+  firstName: String!
+  pseudo: String!
+  bio: String!
+  avatar: String
+  dateOfBirth: DateTime!
+  userId: Int!
+}
+
+input UpdateAuthorInput {
+  id: Int!
 }

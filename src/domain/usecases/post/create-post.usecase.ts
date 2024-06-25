@@ -11,8 +11,8 @@ import {
 } from 'src/domain/interfaces/entity/author.interface';
 
 export default class CreatePostUseCase {
-  private postRepository: PostRepositoryInterface;
-  private authorRepository: AuthorRepositoryInterface;
+  private readonly postRepository: PostRepositoryInterface;
+  private readonly authorRepository: AuthorRepositoryInterface;
   constructor() {
     this.postRepository = container.resolve('PostRepository');
     this.authorRepository = container.resolve('authorRepository');

@@ -3,6 +3,7 @@ import { container } from 'tsyringe';
 
 import TypeOrmUserRepository from './repositories/user.repository';
 import TypeOrmPostRepository from './repositories/post.repository';
+import TypeOrmAuthorRepository from './repositories/author.repository';
 
 container
   .register<UserRepositoryInterface>('UserRepository', {
@@ -10,4 +11,7 @@ container
   })
   .register('PostRepository', {
     useValue: new TypeOrmPostRepository(),
+  })
+  .register('AuthorRepository', {
+    useValue: new TypeOrmAuthorRepository(),
   });

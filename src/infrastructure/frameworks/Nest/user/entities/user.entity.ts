@@ -15,9 +15,9 @@ export class User implements UserInterface {
   @Field(() => Int)
   id: number;
   @Column()
-  @Field({ nullable: true })
+  @Field()
   email: string;
-  @Column()
+  @Column({ nullable: true })
   @Field({ nullable: true })
   password: string;
   @CreateDateColumn({

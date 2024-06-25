@@ -5,7 +5,7 @@ export interface PostInterface extends Timestampable {
   id: number;
   title: string;
   content: string;
-  author: AuthorInterface;
+  author?: AuthorInterface;
 }
 
 export type PostInputInterface = Omit<
