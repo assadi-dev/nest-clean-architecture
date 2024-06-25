@@ -22,9 +22,6 @@ export class Author implements AuthorInterface {
   id: number;
   @Column()
   @Field()
-  email: string;
-  @Column()
-  @Field()
   lastName: string;
   @Column()
   @Field()
@@ -42,10 +39,10 @@ export class Author implements AuthorInterface {
   @Field()
   dateOfBirth: Date;
   @Field(() => User)
-  @OneToOne(() => User, { nullable: true })
+  @OneToOne(() => User, (user) => user, { nullable: true })
   @JoinColumn()
   user: User;
-  @OneToMany(() => Post, (post) => post)
+  @OneToMany(() => Post, (post) => post.author)
   @Field(() => [Post], { nullable: true })
   posts: Post[];
   @CreateDateColumn()

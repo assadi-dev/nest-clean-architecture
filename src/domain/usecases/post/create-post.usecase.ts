@@ -15,7 +15,7 @@ export default class CreatePostUseCase {
   private readonly authorRepository: AuthorRepositoryInterface;
   constructor() {
     this.postRepository = container.resolve('PostRepository');
-    this.authorRepository = container.resolve('authorRepository');
+    this.authorRepository = container.resolve('AuthorRepository');
   }
 
   public validateCreateInput(input: PostCreateInputDto) {
@@ -41,8 +41,8 @@ export default class CreatePostUseCase {
     input: CreatePostInputInterface,
   ): Promise<PostInterface> {
     const validatedInput = this.validateCreateInput(input);
-
     const author = await this.findAuthor(validatedInput.authorId);
+    if (!author) throw 'author no found !';
     const newPost = await this.postRepository.create({
       title: validatedInput.title,
       content: validatedInput.content,

@@ -4,7 +4,6 @@ import { UserInterface } from './user.interfaces';
 
 export interface AuthorInterface extends Timestampable {
   id: number;
-  email?: string;
   lastName: string;
   firstName: string;
   pseudo: string | null;

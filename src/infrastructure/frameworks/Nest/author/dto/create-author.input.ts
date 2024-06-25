@@ -4,8 +4,6 @@ import { AuthorCreateInputDto } from 'src/domain/usecases/author/dto/author.dto'
 @InputType()
 export class CreateAuthorInput implements AuthorCreateInputDto {
   @Field()
-  email?: string;
-  @Field()
   lastName?: string;
   @Field()
   firstName?: string;

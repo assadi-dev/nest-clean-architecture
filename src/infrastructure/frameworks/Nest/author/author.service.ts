@@ -4,6 +4,8 @@ import { UpdateAuthorInput } from './dto/update-author.input';
 import { container } from 'tsyringe';
 import Logger from 'src/domain/port/logger/logger.port';
 import CreateAuthorUseCase from 'src/domain/usecases/author/create-author.usecase';
+import ListAuthorUseCase from 'src/domain/usecases/author/list-author.usecase';
+import FindAuthorUseCase from 'src/domain/usecases/author/find.usecase';
 
 @Injectable()
 export class AuthorService {
@@ -19,12 +21,15 @@ export class AuthorService {
     return result;
   }
 
-  findAll() {
-    return `This action returns all author`;
+  async findAll() {
+    const listAuthor = new ListAuthorUseCase();
+    return await listAuthor.execute();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} author`;
+  async findOne(id: number) {
+    const findAuthor = new FindAuthorUseCase();
+
+    return await findAuthor.execute(id);
   }
 
   update(id: number, updateAuthorInput: UpdateAuthorInput) {

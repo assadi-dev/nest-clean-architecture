@@ -1,7 +1,6 @@
 import { z } from 'zod';
 
 export const authorInputDto = z.object({
-  email: z.string().min(1),
   lastName: z.string().min(1),
   firstName: z.string().min(1),
   pseudo: z.string(),

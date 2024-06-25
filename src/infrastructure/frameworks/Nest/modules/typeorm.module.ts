@@ -12,7 +12,7 @@ import { Post } from '../post/entities/post.entity';
     TypeOrmModule.forRoot({
       ...mysqlOption,
       entities: [User, Author, Post],
-      synchronize: false,
+      synchronize: true,
       autoLoadEntities: true,
     }),
   ],

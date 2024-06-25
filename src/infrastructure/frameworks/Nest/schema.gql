@@ -27,7 +27,6 @@ type Post {
 
 type Author {
   id: Int!
-  email: String!
   lastName: String!
   firstName: String!
   pseudo: String!
@@ -75,7 +74,6 @@ input CreatePostInput {
 }
 
 input CreateAuthorInput {
-  email: String!
   lastName: String!
   firstName: String!
   pseudo: String!

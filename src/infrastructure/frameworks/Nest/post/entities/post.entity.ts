@@ -6,7 +6,6 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
-  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -25,7 +24,7 @@ export class Post implements PostInterface {
   @Column()
   @Field()
   content: string;
-  @ManyToOne(() => Author, { nullable: true })
+  @ManyToOne(() => Author, (author) => author.posts)
   @Field(() => Author, { nullable: true })
   author: Author;
   @CreateDateColumn({ nullable: true })
